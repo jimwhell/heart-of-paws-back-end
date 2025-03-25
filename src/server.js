@@ -33,6 +33,7 @@ app.use(
 
 app.use(
   session({
+    secure: false,
     secret: process.env.SECRET_KEY,
     resave: false, //avoids saving unchanged sessions
     saveUninitialized: true, //save new sessions
