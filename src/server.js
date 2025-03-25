@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configure CORS properly for cookies
 app.use(
   cors({
-    origin: "http://localhost:52848",
+    origin: "http://localhost:4200",
     credentials: true,
   })
 );
