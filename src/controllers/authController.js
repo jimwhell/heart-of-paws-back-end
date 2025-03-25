@@ -150,7 +150,7 @@ exports.verifyEmail = asyncHandler(async (req, res) => {
 
   res
     .status(200)
-    .send(
-      `Email: ${user.email} verified sucessfully. You can now close this tab.`
-    );
+    .send({
+      message: `Email verified successfully ${user.email}. You can now close this tab `,
+    });
 });
