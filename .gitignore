@@ -1,0 +1,63 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# MongoDB files
+*.mongodb
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+
+# Runtime files
+*.lock
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Environment variable files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Angular build output (for full-stack MEAN, if you include an Angular frontend)
+dist/
+build/
+out/
+
+# Typescript coverage files
+coverage/
+*.tsbuildinfo
+
+# Test-related files (if using Mocha, Jest, etc.)
+test-coverage/
+*.mocha.js
+*.test.js
+*.spec.js
+
+# Other build files
+/.next
+/.nuxt
+/.angular/
+
+# Temporary files from editors
+*~
+
+# Other custom logs (like from Winston or Morgan logging)
+logs/
+*.log
+
+# private keys
+*.key

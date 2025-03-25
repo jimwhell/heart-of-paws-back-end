@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --red: #e22128;
+  --teal: #47c2ca;
+  --darkteal: #1c959d;
+}
+
+p {
+  font-family: "Montserrat";
+}
+
+h1 {
+  font-family: "Winky Sans", sans-serif;
+  color: var(--darkteal);
+  font-weight: 500;
+}
+
+body {
+  background-color: #f9f6ee;
+}
+
+.button {
+  background-color: #e22128;
+  color: white;
+}
+
+.button:hover {
+  background-color: var(--teal);
+  color: white;
+}
+
+.button:active {
+  background-color: var(--darkteal);
+}
