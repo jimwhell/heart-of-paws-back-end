@@ -56,7 +56,7 @@ app.use("/inquiries", inquiriesRouter);
 
 //error handler middleware
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error("Global error handler:", err);
 
   if (err instanceof CustomError) {
     return res.status(err.statusCode).json({
@@ -66,6 +66,7 @@ app.use((err, req, res, next) => {
 
   res.status(err.statusCode || 500).json({
     message: err.message || "Something went wrong, please try again later.",
+    error: process.env.NODE_ENV === "development" ? err : {},
   });
 });
 
