@@ -1,6 +1,6 @@
 const isAuthenticated = (req, res, next) => {
   // Log the entire session to understand its structure
-  console.log("Full session:", req.session);
+  console.log("Full session:", req.session.user);
 
   // Check if session exists
   if (!req.session) {
