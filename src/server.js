@@ -40,7 +40,11 @@ app.use(
       mongoUrl: process.env.ATLAS_URI,
       maxAge: 1000 * 60 * 60 * 24,
     }),
-    cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }, //config cookie
+    cookie: {
+      secure: false,
+      sameSite: "none",
+      maxAge: 1000 * 60 * 60 * 24,
+    }, //config cookie
   }) //stores the session in MongoDb instead of default server memory
 );
 
