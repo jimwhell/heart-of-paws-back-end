@@ -94,14 +94,30 @@ exports.loginUser = asyncHandler(async (req, res) => {
     throw new CustomError("Invalid username or password.", 401);
   }
 
-  req.session.user = { id: user.id, name: user.name, role: user.role };
+  // Create user session object
+  req.session.user = {
+    id: user.id,
+    name: user.name,
+    role: user.role,
+  };
+
+  // Wrap session save in a promise to handle asynchronous save
+  await new Promise((resolve, reject) => {
+    req.session.save((err) => {
+      if (err) {
+        reject(new CustomError("Session could not be saved", 500));
+      } else {
+        resolve();
+      }
+    });
+  });
 
   res.status(200).send({
     message: "User logged in successfully",
     name: req.session.user.name,
     id: req.session.user.id,
     role: user.role,
-  }); //set cookie header will be sent along with the response
+  });
 });
 
 exports.logout = asyncHandler(async (req, res) => {
