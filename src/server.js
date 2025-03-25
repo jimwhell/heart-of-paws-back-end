@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configure CORS properly for cookies
 app.use(
   cors({
-    origin: "https://heartofpawstarlac.netlify.app/",
+    origin: "https://heartofpawstarlac.netlify.app",
     credentials: true,
   })
 );
