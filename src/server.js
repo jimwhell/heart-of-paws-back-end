@@ -33,7 +33,6 @@ app.use(
 
 app.use(
   session({
-    secure: false,
     secret: process.env.SECRET_KEY,
     resave: false, //avoids saving unchanged sessions
     saveUninitialized: true, //save new sessions
@@ -41,7 +40,7 @@ app.use(
       mongoUrl: process.env.ATLAS_URI,
       maxAge: 1000 * 60 * 60 * 24,
     }),
-    cookie: { secure: "auto", httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }, //config cookie
+    cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }, //config cookie
   }) //stores the session in MongoDb instead of default server memory
 );
 
