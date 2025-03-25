@@ -41,9 +41,10 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24,
     }),
     cookie: {
-      secure: false,
-      sameSite: "none",
-      maxAge: 1000 * 60 * 60 * 24,
+      secure: process.env.NODE_ENV === "production", // True if in production (requires HTTPS)
+      httpOnly: true, // Prevents JavaScript from accessing cookies (security measure)
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 1000 * 60 * 60 * 24, // 1-day expiration
     }, //config cookie
   }) //stores the session in MongoDb instead of default server memory
 );
