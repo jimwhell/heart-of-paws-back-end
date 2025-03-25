@@ -1,29 +1,27 @@
 const isAuthenticated = (req, res, next) => {
-  // Log entire session for debugging
-  console.log("Full authentication check session:", req.session);
+  // Log the entire session to understand its structure
+  console.log("Full session:", req.session);
 
-  // Detailed logging of session properties
-  console.log("Session exists:", !!req.session);
-  console.log("User in session:", req.session && req.session.user);
-
-  // Comprehensive check
-  if (!req.session || !req.session.user) {
-    console.log("Authentication failed: No session or user");
-    return res.status(401).send({
-      message: "Not authenticated",
-      details: {
-        sessionExists: !!req.session,
-        userInSession: req.session && !!req.session.user,
-      },
-    });
+  // Check if session exists
+  if (!req.session) {
+    return res.status(401).send({ message: "No session found" });
   }
 
-  // Check user role
+  // Check if user exists in the session
+  if (!req.session.user) {
+    return res.status(401).send({ message: "User not logged in" });
+  }
+
+  // Check user role with more detailed logging
+  console.log("Session user:", req.session.user);
+  console.log("User role:", req.session.user.role);
+
   if (req.session.user.role === "user") {
-    console.log("Authentication successful");
-    return next();
+    return next(); // pass control to the next middleware
   }
 
-  console.log("Authentication failed: Incorrect role");
+  // If no conditions are met
   res.status(401).send({ message: "You must be logged in to access this" });
 };
+
+module.exports = isAuthenticated;
