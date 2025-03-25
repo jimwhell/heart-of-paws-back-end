@@ -41,7 +41,7 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24,
     }),
     cookie: {
-      secure: false,
+      secure: true,
       httpOnly: true, // Prevents JavaScript from accessing cookies (security measure)
       sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24, // 1-day expiration
@@ -50,6 +50,7 @@ app.use(
 );
 
 app.use(morgan("tiny"));
+app.set("trust proxy", 1);
 
 app.use("/users", userRouter);
 app.use("/admin", adminRouter);

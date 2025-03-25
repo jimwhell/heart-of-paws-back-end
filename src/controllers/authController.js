@@ -95,6 +95,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 
   req.session.user = { id: user.id, name: user.name, role: user.role };
+  console.log("Session after login:", req.session);
 
   res.status(200).send({
     message: "User logged in successfully",
